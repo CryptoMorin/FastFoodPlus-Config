@@ -1,0 +1,147 @@
+# Plugin prefix
+prefix: "&6-=(&4FastFoodPlus&6)=- &2"
+
+# config.yml version
+# Please do not change this.
+version: 1.3.3
+
+# Not recommended to change!
+# Enable / Disable Events
+# block: When player right-clicks on a block.
+# air: When player right-clicks on air.
+event-rightclick-block: true
+event-rightclick-air: true
+
+# WARNING: Beta Version
+# If offhand is not disabled and both hands contrain food, which hand do we use?
+# MainHand - OffHand
+hand-priority: MainHand
+
+# Do we ban offhand from using foods?
+# and attacking with the main hand.
+# The swap messages are for the keyboard use. Default key is "f" to swap items between hands.
+offhand-disable-swap: true
+offhand-disable: true
+offhand-disalbe-creative-swap: true
+offhand-disalbe-creative: true
+# Turn back the item which was force put in the offhand inventory back to inventory.
+offhand-add-inventory: true
+# If the player inventory is already full, the method above will be executed.
+# Drop the item if player tried to force put food into their offhand slot from inventory.
+# Note that the drop method will not work while the player is in creative.
+# Drop - Remove
+offhand-force-deny-action: Drop
+offhand-deny-swap: "&8-=<&4!&8>=- &cYou're not allowed to use foods using your offhand &8-=<&4!&8>=-"
+offhand-deny: "&8-=<&4!&8>=- &cYou're not allowed to use foods using your offhand &8-=<&4!&8>=-"
+offhand-deny-creative-swap: "&8-=<&4!&8>=- &cYou're not allowed to use foods using your offhand &8-=<&4!&8>=-"
+offhand-deny-creative: "&8-=<&4!&8>=- &cYou're not allowed to use foods using your offhand &8-=<&4!&8>=-"
+offhand-free-slot: "&8-=<&4!&8>=- &cYou don't have any free slot to put the food back into your inventory &8-=<&4!&8>=-"
+
+# The message sent when a player tries to use foods in creative mode.
+creative-deny: "&8-=<&4!&8>=- &cYou're not allowed to use foods while in creative &8-=<&4!&8>=-"
+
+# The sound that triggers near the player after getting denied for something.
+# Format:
+# SoundType, Volume, Pitch
+deny-sound: BLOCK_NOTE_BASS, 100, 1
+deny-creative-sound: BLOCK_NOTE_BASS, 100, 1
+# The delay for denied messages for using food in "milliseconds"
+# Note: 1000ms = 1sec
+# This future is not fully supported for all the messages.
+deny-delay: 1000
+# Disable natural rengeneration from hunger.
+disable-regeneration: true
+
+# Disable hunger completely
+disable-hunger: true
+
+# Format:
+# PotionEffectType, Duration, Potency
+# Note: The duration is in seconds and potency starts from 1 not 0.
+# https://hub.spigotmc.org/javadocs/bukkit/org/bukkit/potion/PotionEffectType.html
+golden-apple:
+- DAMAGE_RESISTANCE, 10, 1
+- ABSORPTION, 10, 1
+
+enchanted-golden-apple:
+- DAMAGE_RESISTANCE, 10, 1
+- FIRE_RESISTANCE, 10, 1
+- ABSORPTION, 10, 1
+- REGENERATION, 10, 1
+
+# Keep the remaining empty bowl when the player use soups.
+# mushroom-stew | rabbit-stew | beetroot-soup
+keep-bowl: true
+
+# Automatically drop bowls when the player used them.
+# Note: This option will not work if "keep-bowl" is set to false.
+autodrop-bowl: true
+
+# Sound when a food has been consumed
+eating-sound: ENTITY_PLAYER_BURP, 100, 1
+# The delay for using foods in "Milliseconds"
+eating-delay: 100
+# This is where you define how many hearts each food can give to the player.
+# Default values are the same default amount of hunger given to player when eating them.
+# Note: Each full heart has 2 half hearts so => apple: 4 = 2 full hearts = 4 half hearts
+# https://minecraft.gamepedia.com/Food
+foods:
+  # Basics
+  apple: 4
+  bread: 5
+  carrot: 3
+  potato: 1
+  baked-potato: 5
+  melon: 2
+  cookie: 2
+  
+  # Meat
+  beef: 3
+  chicken: 2
+  mutton: 2
+  pork: 3
+  rabbit: 3
+  
+  # Cooked Meat
+  steak: 8
+  cooked-chicken: 6
+  cooked-mutton: 6
+  cooked-pork: 8
+  cooked-rabbit: 5
+  
+  # Fish
+  fish: 2
+  salmon: 2
+  clownfish: 1
+  pufferfish: 1
+  
+  # Cooked Fish
+  cooked-fish: 5
+  cooked-salmon: 6
+  
+  # Soups
+  mushroom-stew: 6
+  rabbit-stew: 10
+  beetroot-soup: 6
+  
+  # Harmful
+  poisonous-potato: 2
+  pumpkin-pie: 8
+  rotten-flesh: 4
+  spider-eye: 2
+  
+  # Golden
+  golden-carrot: 6
+  golden-apple: 4
+  enchanted-golden-apple: 4
+  
+  
+# Disable / Enable Messages
+messages:
+  creative: true
+  offhand:
+    deny-swap: true
+    deny: true
+    deny-creative-swap: true
+    deny-creative: true
+    free-slot: true
