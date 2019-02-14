@@ -122,6 +122,10 @@ keep-bowl: true
 # Note: This option will not work if "keep-bowl" is false.
 autodrop-bowl: true
 
+# Disables the teleportation and only heals the player.
+disable-chorus-fruit-teleportation: true
+chorus-fruit-teleportation-full-health: true
+
 # This will prevent the player from eating food while right-clicking on certain blocks.
 restricted-blocks:
 - FARMLAND
@@ -156,7 +160,7 @@ foods:
   baked-potato: 5
   melon: 2
   cookie: 2
-  #chorus-fruit: 4 - This option will be disabled for now, as you can already eat chorus fruit even if your hunger is full.
+  chorus-fruit: 4
   # Will only work with placed cakes. For each slice only.
   cake: 2
   
