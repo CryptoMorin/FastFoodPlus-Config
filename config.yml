@@ -9,15 +9,14 @@ prefix: "&6-=(&4FastFoodPlus&6)=- &2"
 
 # Configuration Version
 # Please do not change this unless you're sure what you're doing.
-version: 25
+version: 26
 
 # Check if the plugin has a new update from SpigotMC.
 # The message will be announced to Console when starting the plugin
 # and players who have the permission when they join.
 check-updates: true
 
-# Incompatible for now.
-# It works for some functions only.
+# It works for some specific functions only.
 debug: false
 
 # Not recommended to change.
@@ -133,6 +132,9 @@ restricted-blocks:
 - ENDER_CHEST
 - CHEST
 - TRAPPED_CHEST
+
+# The food system will absolutely have no effect in these worlds.
+disabled-worlds: []
 
 #|-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-|#
 #|++++++++++++++++++++++++++++++++++++++++++++++++++++++|#
