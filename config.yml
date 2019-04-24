@@ -149,29 +149,10 @@ disabled-worlds: []
 eating-sound: ENTITY_GENERIC_EAT, 1.0f, 1.0f
 # The delay for using foods in milliseconds.
 eating-delay: 100
-
-
-# Format:
-# Food Name: Healing Amount
-# OR
-# Food Name:
-#   amount: Healing Amount
-#   effects:
-#   - Effect, Duration, Potency
-#   - POISON, 300, 2
-
-# Healing Amount
 # This is where you define how many hearts each food can give to the player.
 # Default values are the same default amount of hunger given to player when eating them.
 # Note: Each full heart has 2 half hearts => apple: 4 -> 2 full hearts = 4 half hearts
 # https://minecraft.gamepedia.com/Food
-
-# Potion Effects
-# Effects given to players for each food.
-# https://minecraft.gamepedia.com/Status_effect
-# List of Potion Effect Types: https://hub.spigotmc.org/javadocs/spigot/org/bukkit/potion/PotionEffectType.html
-# Duration: Potion effect time (In seconds)
-# Potency: Potion effect level
 foods:
   # Basics
   apple: 4
@@ -181,7 +162,6 @@ foods:
   baked-potato: 5
   melon: 2
   cookie: 2
-  pumpkin-pie: 8
   chorus-fruit: 4
   # Will only work with placed cakes. For each slice only.
   cake: 2
@@ -206,11 +186,7 @@ foods:
   salmon: 2
   # clownfish
   tropical-fish: 1
-  pufferfish:
-    amount: 1
-    effects:
-    - CONFUSION, 15, 2
-    - POISON, 70, 4
+  pufferfish: 1
   dried-kelp: 1
   
   # Cooked Fish
@@ -224,18 +200,10 @@ foods:
   beetroot-soup: 6
   
   # Harmful
-  poisonous-potato:
-    amount: 2
-    effects:
-    - POISON, 4, 1
-  rotten-flesh:
-    amount: 4
-    effects:
-    - POISON, 5, 1
-  spider-eye:
-    amount: 2
-    effects:
-    - POISON, 4, 1
+  poisonous-potato: 2
+  pumpkin-pie: 8
+  rotten-flesh: 4
+  spider-eye: 2
   
   # Golden
   golden-carrot: 6
