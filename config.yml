@@ -9,7 +9,7 @@ prefix: "&6-=(&4FastFoodPlus&6)=- &2"
 
 # Configuration Version
 # Please do not change this unless you're sure what you're doing.
-version: 27
+version: 28
 
 # Check if the plugin has a new update from SpigotMC.
 # The message will be announced to Console when starting the plugin
@@ -20,56 +20,48 @@ check-updates: true
 debug: false
 
 # Not recommended to change.
-# These options are highly recommended to be default unless you're sure what you're doing.
-# -------------------------------------------------------------
-# Enable/Disable Clicking Events
 # block: When a player right-clicks on a block.
 # air: When a player right-clicks air.
 event-rightclick-block: true
 event-rightclick-air: true
-# This blocks foods from being used while using your offhand.
-disable-events-rightclick-offhand: true
-disable-events-rightclick-offhand-deny: "&8-=<&4!&8>=- &cYou're not allowed to eat food using your offhand! &8-=<&4!&8>=-"
 
-# If both hands contain food and offhand support is not disabled, this will be the hand
-# which the food will be used first until the stack is used and it starts using the other hand.
-# Note: If we allow the use of both hands at the same time, it's not going to make any sense...
-# So you're supposed to choose one:
+# If both hands are holding food and offhand support is enabled, this will be the hand
+# which the food will be used first until the stack is used and it starts using the food from the other hand.
 # MainHand - OffHand
 hand-priority: MainHand
 
 # Ban offhand from using foods.
 # The swapping options are for the keyboard key. Default key for swapping items between hands is "F".
-# Other than swapping, players can still open their inventory and put the food in their offhand slot. Which is "offhand-disable".
+# Other than swapping, players can still open their inventory and put the food in their offhand slot that'll
+# be disabled with "offhand-disable-swap" too.
 offhand-disable: true
 offhand-disable-swap: true
-offhand-disalbe-creative: false
 offhand-disalbe-swap-creative: false
-# Turns the item back which was forcely put in the player's offhand inventory slot, back to an empty slot in the player's inventory.
-offhand-add-inventory: true
-# If the player's inventory is already full, the option above will be used instead.
-# Drop the item if player tried to forcely put foods in their offhand slot from their inventory.
-# Note: The drop option will not work while the player is in creative for sure.
-# Drop - Remove
-offhand-force-deny-action: Drop
+# Only works if one of the "swap" options above is set to true.
+# Turns the item back which was put in the player's offhand inventory slot, back to an empty slot in the player's inventory.
+offhand-deny-force-add-inventory: true
+# If the player's inventory is already full or the option above is set to false, the option below will be used instead.
+# Drop the item if the player tried to put food in their offhand slot from their inventory.
+# Stop the player from putting the item in the slot.
+# Note: The drop option will definitely not work if the player is in creative mode, it'll be removed instead.
+# drop - stop
+# default: stop - even if the option chosen is wrong "stop" will be used.
+offhand-deny-final-action: stop
 
-offhand-deny: "&8-=<&4!&8>=- &cYou're not allowed to put foods in your offhand &8-=<&4!&8>=-"
-offhand-deny-swap: "&8-=<&4!&8>=- &cYou're not allowed to swap foods into your offhand &8-=<&4!&8>=-"
-offhand-deny-creative: "&8-=<&4!&8>=- &cYou're not allowed to put foods in your offhand in creative &8-=<&4!&8>=-"
-offhand-deny-swap-creative: "&8-=<&4!&8>=- &cYou're not allowed to use foods using your offhand &8-=<&4!&8>=-"
-offhand-free-slot: "&8-=<&4!&8>=- &cYou don't have any free slots in your inventory to put the food back into it &8-=<&4!&8>=-"
-
-# The message when a player tries to use foods in creative mode.
-creative-deny: "&8-=<&4!&8>=- &cYou're not allowed to use foods while in creative &8-=<&4!&8>=-"
+offhand-deny: "&8-=<&4!&8>=- &cYou're not allowed to eat food using your offhand! &8-=<&4!&8>=-"
+creative-deny: "&8-=<&4!&8>=- &cYou're not allowed to use foods in creative mode &8-=<&4!&8>=-"
+offhand-deny-swap: "&8-=<&4!&8>=- &cYou're not allowed to swap foods with your offhand &8-=<&4!&8>=-"
+offhand-deny-swap-creative: "&8-=<&4!&8>=- &cYou're not allowed to swap foods with your offhand in creative mode &8-=<&4!&8>=-"
+offhand-deny-free-slot: "&8-=<&4!&8>=- &cYou don't have any free slots in your inventory to put the food back &8-=<&4!&8>=-"
 
 # The sound that plays after getting denied.
 # Format:
 # SoundType, Volume, Pitch
-# 1.13: BLOCK_NOTE_BLOCK_BASS
-# Old: BLOCK_NOTE_BASS
-# Don't use 1.8 sound names.
-deny-sound: BLOCK_NOTE_BASS, 1.0f, 1.0f
-deny-creative-sound: BLOCK_NOTE_BASS, 1.0f, 1.0f
+# 1.13+: BLOCK_NOTE_BLOCK_BASS
+# 1.9+: BLOCK_NOTE_BASS
+# -1.8: NOTE_BASS
+deny-sound: BLOCK_NOTE_BLOCK_BASS, 1.0f, 1.0f
+deny-creative-sound: BLOCK_NOTE_BLOCK_BASS, 1.0f, 1.0f
 # The delay for denied messages. In milliseconds.
 # Note: 1000ms = 1sec
 deny-delay: 1000
@@ -79,6 +71,11 @@ disable-regeneration: true
 
 # Disable Hunger
 disable-hunger: true
+
+# Freezes the hunger bar to a certain point.
+# Only works if disable-hunger is true.
+hold-honger: 20
+
 # This option only works if disable-hunger is false.
 # Options: none, mode1, mode2
 
@@ -90,28 +87,10 @@ disable-hunger: true
 # food will be consumed instantly instead of being eaten. Otherwise it'll be consumed normally.
 
 # none: Plugin will not do anything about this.
-better-hunger: mode2
+better-hunger: none
 
 # The saturation given to the player after instanty healing with food. Set to 0 to only use the hunger saturation.
 better-hunger-mode2-saturation: 1
-
-# This option is for the servers that spreaded golden apples for a really low price
-# and now they want to decrease the power.
-custom-golden-apples: false
-
-# Format:
-# PotionEffectType, Duration, Potency
-# Note: The duration is in seconds and potency starts from 1 not 0.
-# https://hub.spigotmc.org/javadocs/bukkit/org/bukkit/potion/PotionEffectType.html
-golden-apple:
-- REGENERATION, 5, 2
-- ABSORPTION, 120, 1
-
-enchanted-golden-apple:
-- REGENERATION, 20, 2
-- ABSORPTION, 120, 4
-- DAMAGE_RESISTANCE, 300, 1
-- FIRE_RESISTANCE, 300, 1
 
 # Keep the remaining empty bowl when the player use soups.
 # Mushroom Stew - Rabbit Stew - Beetroot Soup
@@ -127,8 +106,8 @@ chorus-fruit-teleportation-full-health: true
 
 # This will prevent the player from eating food while right-clicking on certain blocks.
 restricted-blocks:
+# 1.12 SOIL = 1.13 FARMLAND
 - FARMLAND
-# AKA SOIL
 - ENDER_CHEST
 - CHEST
 - TRAPPED_CHEST
@@ -143,11 +122,12 @@ disabled-worlds: []
 #|-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-|#
 
 # Food Consume Sound
-# 1.13: ENTITY_GENERIC_EAT
-# Older: ENTITY_PLAYER_BURP
+# 1.13+: ENTITY_PLAYER_BURP OR ENTITY_GENERIC_EAT
+# Older: BURP OR EAT
 # Don't use 1.8 sound names.
 eating-sound: ENTITY_GENERIC_EAT, 1.0f, 1.0f
 # The delay for using foods in milliseconds.
+# It's
 eating-delay: 100
 
 
@@ -156,6 +136,7 @@ eating-delay: 100
 # OR
 # Food Name:
 #   amount: Healing Amount
+#   consumable: true/false
 #   effects:
 #   - Effect, Duration, Potency
 #   - POISON, 300, 2
@@ -164,7 +145,12 @@ eating-delay: 100
 # This is where you define how many hearts each food can give to the player.
 # Default values are the same default amount of hunger given to player when eating them.
 # Note: Each full heart has 2 half hearts => apple: 4 -> 2 full hearts = 4 half hearts
+# Note: Negative numbers do work.
 # https://minecraft.gamepedia.com/Food
+
+# Consumable
+# Basically it doesn't use the food instantly but consumes it normally but with the
+# specified heal value and the effects.
 
 # Potion Effects
 # Effects given to players for each food.
@@ -172,6 +158,10 @@ eating-delay: 100
 # List of Potion Effect Types: https://hub.spigotmc.org/javadocs/spigot/org/bukkit/potion/PotionEffectType.html
 # Duration: Potion effect time (In seconds)
 # Potency: Potion effect level
+
+# Note that you can add ANY blocks except STONE to this food list, and remove any as well.
+# Use these names in the list: https://hub.spigotmc.org/javadocs/spigot/org/bukkit/Material.html
+# However there is a special pattern that'll still recognize foods if you don't exactly follow the list above.
 foods:
   # Basics
   apple: 4
@@ -185,6 +175,7 @@ foods:
   chorus-fruit: 4
   # Will only work with placed cakes. For each slice only.
   cake: 2
+  sweet-berries: 2
   
   # Meat
   beef: 3
@@ -194,7 +185,8 @@ foods:
   rabbit: 3
   
   # Cooked Meat
-  steak: 8
+  # steak
+  cooked-beef: 8
   cooked-chicken: 6
   cooked-mutton: 6
   cooked-porkchop: 8
@@ -222,6 +214,12 @@ foods:
   mushroom-stew: 6
   rabbit-stew: 10
   beetroot-soup: 6
+  suspicious-stew:
+    amount: 6
+    effects:
+    - REGENERATION, 6, 1
+    - SPEED, 8, 1
+    - WITHER, 3, 1
   
   # Harmful
   poisonous-potato:
@@ -239,8 +237,22 @@ foods:
   
   # Golden
   golden-carrot: 6
-  golden-apple: 4
-  enchanted-golden-apple: 4
+  # These healing values and effects are absolute and accurate taken from the wiki page.
+  golden-apple:
+    amount: 4
+    consumable: false
+    effects:
+    - REGENERATION, 5, 2
+    - ABSORPTION, 120, 1
+  enchanted-golden-apple:
+    amount: 4
+    consumable: true
+    effects:
+    - REGENERATION, 20, 2
+    - ABSORPTION, 120, 4
+    - DAMAGE_RESISTANCE, 300, 1
+    - FIRE_RESISTANCE, 300, 1
+
 
 #|-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-|#
 #|++++++++++++++++++++++++++++++++++++++++++++++++++++++|#
@@ -268,29 +280,29 @@ reload-permission-console-notify: "&e%player% &ctried to reload the plugin."
 #|++++++++++++++++++++++++++++++++++++++++++++++++++++|#
 #|-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-|#
 
-usage: "&cInvalid Usage!"
-updates-command-permission: "&cYou don't have permission to do that."
+usage: "&8-=<&4!&8>=- &cInvalid Usage! &8-=<&4!&8>=-"
+updates-command-permission: "&8-=<&4!&8>=- &cYou don't have permission to do that. &8-=<&4!&8>=-"
 
 messages:
-  # Core
   updater:
+    # Denied message to player
     command-permission: true
     startup: true
     playerjoin:
       found: true
       uptodate: false
+  # /ffp
   usages:
     help: true
+  # Eating foods in creative
   creative: true
   offhand:
-    deny-events: true
     deny: true
     deny-swap: true
-    deny-creative: true
     deny-swap-creative: true
     free-slot: true
     
-  # Reload  
+  # Reload
   reload:
     player:
       self: true
