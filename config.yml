@@ -9,7 +9,7 @@ prefix: "&6-=(&4FastFoodPlus&6)=- &2"
 
 # Configuration Version
 # Please do not change this unless you're sure what you're doing.
-version: 28
+version: 29
 
 # Check if the plugin has a new update from SpigotMC.
 # The message will be announced to Console when starting the plugin
@@ -18,6 +18,9 @@ check-updates: true
 
 # It works for some specific functions only.
 debug: false
+# Write a log file in the plugin's folder.
+# Can be used even if debug is false.
+write-loggers: true
 
 # Not recommended to change.
 # block: When a player right-clicks on a block.
