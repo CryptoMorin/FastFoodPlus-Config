@@ -9,7 +9,7 @@ prefix: "&6-=(&4FastFoodPlus&6)=- &2"
 
 # Configuration Version
 # Please do not change this unless you're sure what you're doing.
-version: 29
+version: 30
 
 # Check if the plugin has a new update from SpigotMC.
 # The message will be announced to Console when starting the plugin
@@ -163,8 +163,10 @@ eating-delay: 100
 # Potency: Potion effect level
 
 # Note that you can add ANY blocks except STONE to this food list, and remove any as well.
+# Make sure you're using the latest material names in the list.
 # Use these names in the list: https://hub.spigotmc.org/javadocs/spigot/org/bukkit/Material.html
 # However there is a special pattern that'll still recognize foods if you don't exactly follow the list above.
+# Note that some 1.14 materials might not work.
 foods:
   # Basics
   apple: 4
@@ -172,7 +174,7 @@ foods:
   carrot: 3
   potato: 1
   baked-potato: 5
-  melon: 2
+  melon-slice: 2
   cookie: 2
   pumpkin-pie: 8
   chorus-fruit: 4
