@@ -9,7 +9,7 @@ prefix: "&6-=(&4FastFoodPlus&6)=- &2"
 
 # Configuration Version
 # Please do not change this unless you're sure what you're doing.
-version: 31
+version: 32
 
 # Check if the plugin has a new update from SpigotMC.
 # The message will be announced to Console when starting the plugin
@@ -75,22 +75,40 @@ disable-regeneration: true
 # Disable Hunger
 disable-hunger: true
 
+# Only works if disable-regeneration and disable-hunger is true.
+# It basically stops the "shaking hunger bar" animation.
+# Gives players more saturation when their hunger bar is about to drop.
+# This option doesn't have that much effect on performance,
+# but it's recommended to disable it if you have more than 100 players, doesn't really matter.
+keep-saturation: true
+
 # Freezes the hunger bar to a certain point.
 # Only works if disable-hunger is true.
 hold-honger: 20
 
 # This option only works if disable-hunger is false.
-# Options: none, mode1, mode2
+# Options: none, mode1, mode2, mode3
 
 # mode1:
 # You will not be able to instantly heal if you have hunger.
 
 # mode2:
 # If the food's healing amount is higher than the missing hunger amount,
-# food will be consumed instantly instead of being eaten. Otherwise it'll be consumed normally.
+# food will be consumed instantly instead of being eaten, otherwise it'll be consumed normally.
+
+# mode3:
+# Same as mode2, but if your health is lower than the specified health value below
+# the food will be consumed instead of being eaten.
+
+# mode4
+# Instantly consume if health is lower than hunger, otherwise eat.
 
 # none: Plugin will not do anything about this.
-better-hunger: none
+better-hunger:
+  mode: none
+  # The saturation given to the player after instanty healing with food. Set to 0 to only use the hunger saturation.
+  mode2-3-saturation: 0.2
+  mode3-health: 10
 
 # The saturation given to the player after instanty healing with food. Set to 0 to only use the hunger saturation.
 better-hunger-mode2-saturation: 1
