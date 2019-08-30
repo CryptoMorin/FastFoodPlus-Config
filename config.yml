@@ -9,7 +9,7 @@ prefix: "&6-=(&4FastFoodPlus&6)=- &2"
 
 # Configuration Version
 # Please do not change this unless you're sure what you're doing.
-version: 32
+version: 33
 
 # Check if the plugin has a new update from SpigotMC.
 # The message will be announced to Console when starting the plugin
@@ -63,8 +63,8 @@ offhand-deny-free-slot: "&8-=<&4!&8>=- &cYou don't have any free slots in your i
 # 1.13+: BLOCK_NOTE_BLOCK_BASS
 # 1.9+: BLOCK_NOTE_BASS
 # -1.8: NOTE_BASS
-deny-sound: BLOCK_NOTE_BLOCK_BASS, 1.0f, 1.0f
-deny-creative-sound: BLOCK_NOTE_BLOCK_BASS, 1.0f, 1.0f
+deny-sound: BLOCK_NOTE_BLOCK_BASS, 1.0, 1.0
+deny-creative-sound: BLOCK_NOTE_BLOCK_BASS, 1.0, 1.0
 # The delay for denied messages. In milliseconds.
 # Note: 1000ms = 1sec
 deny-delay: 1000
@@ -75,19 +75,17 @@ disable-regeneration: true
 # Disable Hunger
 disable-hunger: true
 
-# Only works if disable-regeneration and disable-hunger is true.
+# Only works if disable-hunger is true.
 # It basically stops the "shaking hunger bar" animation.
 # Gives players more saturation when their hunger bar is about to drop.
-# This option doesn't have that much effect on performance,
-# but it's recommended to disable it if you have more than 100 players, doesn't really matter.
 keep-saturation: true
 
-# Freezes the hunger bar to a certain point.
 # Only works if disable-hunger is true.
+# Freezes the hunger bar at a certain level.
 hold-honger: 20
 
 # This option only works if disable-hunger is false.
-# Options: none, mode1, mode2, mode3
+# Options: none, mode1, mode2, mode3, mode4
 
 # mode1:
 # You will not be able to instantly heal if you have hunger.
@@ -110,9 +108,6 @@ better-hunger:
   mode2-3-saturation: 0.2
   mode3-health: 10
 
-# The saturation given to the player after instanty healing with food. Set to 0 to only use the hunger saturation.
-better-hunger-mode2-saturation: 1
-
 # Keep the remaining empty bowl when the player use soups.
 # Mushroom Stew - Rabbit Stew - Beetroot Soup
 keep-bowl: true
@@ -126,12 +121,22 @@ disable-chorus-fruit-teleportation: true
 chorus-fruit-teleportation-full-health: true
 
 # This will prevent the player from eating food while right-clicking on certain blocks.
+# Any blocks that are not added in this list will first consume the food until the player's health is full,
+# then allows them to right-click on those blocks.
+
+# You can use both 1.14 and 1.12 material names.
+# You can see a list of updated material names here: https://hub.spigotmc.org/javadocs/spigot/org/bukkit/Material.html
+
+# You can also use "CONTAINS:<name>" prefix to add every block that contains the specific name in its material name.
+# E.g. CONTAINS:ANVIL -> ANVIL, CHIPPED_ANVIL, DAMAGED_ANVIL
 restricted-blocks:
   # 1.12 SOIL = 1.13 FARMLAND
   - FARMLAND
   - ENDER_CHEST
   - CHEST
   - TRAPPED_CHEST
+  - CONTAINS:ANVIL
+  - CRAFTING_TABLE
 
 # The food system will absolutely have no effect in these worlds.
 disabled-worlds: []
@@ -146,7 +151,7 @@ disabled-worlds: []
 # 1.13+: ENTITY_PLAYER_BURP OR ENTITY_GENERIC_EAT
 # Older: BURP OR EAT
 # Don't use 1.8 sound names.
-eating-sound: ENTITY_GENERIC_EAT, 1.0f, 1.0f
+eating-sound: ENTITY_GENERIC_EAT, 1.0, 1.0
 
 # The delay for using foods in milliseconds.
 # Some people might think this is a lot, but it's actually a good
