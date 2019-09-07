@@ -1,6 +1,6 @@
 #|-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-|#
 #|                                                                |#
-#|                 FastFoodsPlus - Hex_26 - Crypto Morin         |#
+#|             FastFoodsPlus - Hex_26 - Crypto Morin             |#
 #|                                                              |#
 #|-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-|#
 
@@ -40,9 +40,11 @@ hand-priority: MainHand
 offhand-disable: true
 offhand-disable-swap: true
 offhand-disalbe-swap-creative: false
+
 # Only works if one of the "swap" options above is set to true.
 # Turns the item back which was put in the player's offhand inventory slot, back to an empty slot in the player's inventory.
 offhand-deny-force-add-inventory: true
+
 # If the player's inventory is already full or the option above is set to false, the option below will be used instead.
 # Drop the item if the player tried to put food in their offhand slot from their inventory.
 # Stop the player from putting the item in the slot.
@@ -82,7 +84,7 @@ keep-saturation: true
 
 # Only works if disable-hunger is true.
 # Freezes the hunger bar at a certain level.
-hold-honger: 20
+hold-hunger: 20
 
 # This option only works if disable-hunger is false.
 # Options: none, mode1, mode2, mode3, mode4
@@ -109,7 +111,7 @@ better-hunger:
   mode3-health: 10
 
 # Keep the remaining empty bowl when the player use soups.
-# Mushroom Stew - Rabbit Stew - Beetroot Soup
+# Mushroom Stew - Rabbit Stew - Beetroot Soup - Suspicious Soup
 keep-bowl: true
 
 # Automatically drops the bowl when the player uses them.
@@ -118,6 +120,8 @@ autodrop-bowl: true
 
 # Disables the teleportation and only heals the player.
 disable-chorus-fruit-teleportation: true
+# Allow chorus fruit teleportation only if the player's health is full.
+# Works only if the option above is true.
 chorus-fruit-teleportation-full-health: true
 
 # This will prevent the player from eating food while right-clicking on certain blocks.
@@ -131,11 +135,31 @@ chorus-fruit-teleportation-full-health: true
 # E.g. CONTAINS:ANVIL -> ANVIL, CHIPPED_ANVIL, DAMAGED_ANVIL
 restricted-blocks:
   # 1.12 SOIL = 1.13 FARMLAND
-  - FARMLAND
-  - ENDER_CHEST
+  - BARREL
+  - BEACON
+  - BREWING_STAND
+  - CAMPFIRE
   - CHEST
+  - COMPOSTER
+  - DISPENSER
+  - DROPPER
+  - ENCHANTING_TABLE
+  - ENDER_CHEST
+  - FARMLAND
+  - GRINDSTONE
+  - HOPPER
+  - LECTERN
+  - LEVER
+  - LOOM
+  - SMOKER
+  - STONECUTTER
   - TRAPPED_CHEST
   - CONTAINS:ANVIL
+  - CONTAINS:BOAT
+  - CONTAINS:DOOR
+  - CONTAINS:FURNACE
+  - CONTAINS:GATE
+  - CONTAINS:SIGN
   - CRAFTING_TABLE
 
 # The food system will absolutely have no effect in these worlds.
@@ -181,7 +205,7 @@ reload-console: "&9Successfuly reloaded."
 reload-console-send: "&9Successfuly reloaded by &aConsole&9."
 
 # Permission
-reload-permission: "&cYou don't have permission to do that."
+reload-permission: "&8-=<&4!&8>=- &cYou don't have permission to do that. &8-=<&4!&8>=-"
 reload-permission-notify: "&e%player% &ctried to reload the plugin."
 reload-permission-console-notify: "&e%player% &ctried to reload the plugin."
 
